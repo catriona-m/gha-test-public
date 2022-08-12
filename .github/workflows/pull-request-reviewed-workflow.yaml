@@ -45,5 +45,7 @@ jobs:
         uses: actions-ecosystem/action-remove-labels@v1
         with:
           github_token: "${{ secrets.GITHUB_TOKEN }}"
-          labels: waiting-response    
+          labels: waiting-response
+          number: ${{ steps.env_vars.outputs.prnumber }}
+          repo: "${{ steps.env_vars.outputs.ghowner }}/${{ steps.env_vars.outputs.ghrepo }}"
           
