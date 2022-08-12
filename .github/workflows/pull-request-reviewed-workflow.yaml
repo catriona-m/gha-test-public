@@ -21,6 +21,7 @@ jobs:
     steps:
       - name: Get Artifact
         id: get_artifact
+        continue-on-error: true
         uses: dawidd6/action-download-artifact@v2
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
@@ -35,6 +36,11 @@ jobs:
           echo '::set-output name=prnumber::$(cat artifact/prnumber.txt)'
           echo '::set-output name=action::$(cat artifact/action.txt)'
           
+      - name: test
+        run: |    
+          echo "${{ steps.env_vars.outputs.action }} "
+          echo "${{ steps.get_artifact.outcome }} "
+        
       - name: add waiting-reponse
         if: steps.get_artifact.outcome == 'success' && steps.env_vars.outputs.action == 'add-waiting-response'
         run: |
