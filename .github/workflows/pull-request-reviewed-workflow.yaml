@@ -5,6 +5,8 @@ on:
   workflow_run:
     workflows:
       - "Pull Request Reviewed"
+    types:
+      - completed  
 
 permissions:
   pull-requests: write
