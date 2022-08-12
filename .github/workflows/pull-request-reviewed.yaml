@@ -6,7 +6,7 @@ on:
     types: [submitted]
     
 permissions:
-  pull-requests: write
+  pull-requests: read
 
 jobs:
   add-or-remove-waiting-response:
