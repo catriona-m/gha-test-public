@@ -1,0 +1,26 @@
+
+name: "Pull Request Reviewed Workflow"
+
+on:
+  workflow_run:
+    workflows:
+      - "Pull Request Reviewed"
+
+permissions:
+  pull-requests: write
+
+
+jobs:
+  test-artifact-download:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          run_id: ${{ github.event.workflow_run.id }}
+          name: artifact
+          
+      - name: test artifact
+        run: |
+          cat artifact/ghrepo.txt
