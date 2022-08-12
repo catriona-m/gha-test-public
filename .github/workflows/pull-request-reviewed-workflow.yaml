@@ -9,9 +9,8 @@ on:
 permissions:
   pull-requests: write
 
-
 jobs:
-  test-artifact-download:
+  add-or-remove-waiting-response:
     runs-on: ubuntu-latest
     outputs:
       ghrepo: ${{ steps.env_vars.outputs.ghrepo }}
@@ -43,5 +42,5 @@ jobs:
       - name: remove waiting-reponse
         if: steps.get_artifact.outcome == 'success' && steps.env_vars.outputs.action == 'remove-waiting-response'
         run: |
-          curl -X DELETE -H "Accept: application/vnd.github+json" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos${{ steps.env_vars.outputs.ghowner }}/${{ steps.env_vars.outputs.ghrepo }}/issues/${{ steps.env_vars.outputs.prnumber }}/labels" -d '{"labels":["waiting-response"]}'
+          curl -X DELETE -H "Accept: application/vnd.github+json" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos${{ steps.env_vars.outputs.ghowner }}/${{ steps.env_vars.outputs.ghrepo }}/issues/${{ steps.env_vars.outputs.prnumber }}/labels/waiting-response"
           
