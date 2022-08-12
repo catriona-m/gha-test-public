@@ -4,6 +4,9 @@ name: "Pull Request Reviewed"
 on:
   pull_request_review:
     types: [submitted]
+    
+permissions:
+  pull-requests: write
 
 jobs:
   add-or-remove-waiting-response:
