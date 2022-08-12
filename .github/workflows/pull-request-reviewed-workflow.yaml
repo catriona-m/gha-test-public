@@ -26,7 +26,7 @@ jobs:
           workflow: pull-request-reviewed.yaml
           
       - name: env_vars
-     #   id: env_vars
+        id: env_vars
         run: |
           echo '::set-output name=ghrepo::$(cat artifact/ghrepo.txt)'
           echo '::set-output name=ghowner::$(cat artifact/ghowner.txt)'
