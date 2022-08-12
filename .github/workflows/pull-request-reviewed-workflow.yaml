@@ -42,10 +42,6 @@ jobs:
           curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos${{ steps.env_vars.outputs.ghowner }}/${{ steps.env_vars.outputs.ghrepo }}/issues/${{ steps.env_vars.outputs.prnumber }}/labels" -d '{"labels":["waiting-response"]}'
       - name: remove waiting-reponse
         if: steps.get_artifact.outcome == 'success' && steps.env_vars.outputs.action == 'remove-waiting-response'
-        uses: actions-ecosystem/action-remove-labels@v1
-        with:
-          github_token: "${{ secrets.GITHUB_TOKEN }}"
-          labels: waiting-response
-          number: ${{ steps.env_vars.outputs.prnumber }}
-          repo: "${{ steps.env_vars.outputs.ghowner }}/${{ steps.env_vars.outputs.ghrepo }}"
+        run: |
+          curl -X DELETE -H "Accept: application/vnd.github+json" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos${{ steps.env_vars.outputs.ghowner }}/${{ steps.env_vars.outputs.ghrepo }}/issues/${{ steps.env_vars.outputs.prnumber }}/labels" -d '{"labels":["waiting-response"]}'
           
