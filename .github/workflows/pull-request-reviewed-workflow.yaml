@@ -14,12 +14,22 @@ jobs:
   test-artifact-download:
     runs-on: ubuntu-latest
     steps:
-      - name: Get Artifact
+      - name: Get_Artifact
         uses: dawidd6/action-download-artifact@v2
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
           workflow: pull-request-reviewed.yaml
           
-      - name: test artifact
+      - name: env_vars
         run: |
-          cat artifact/ghrepo.txt
+          echo "::set-output name=ghrepo::$(cat artifact/ghrepo.txt)"
+          echo "::set-output name=ghowner::$(cat artifact/ghowner.txt)"
+          echo "::set-output name=prnumber::$(cat artifact/prnumber.txt)"
+          echo "::set-output name=action::$(cat artifact/action.txt)"
+          
+      - name: Add waiting-response
+       # if: ${{ steps.env_vars.number.outputs.action }} == "add-waiting-response"
+        run: |
+          echo ${{ steps.env_vars.number.outputs.action }}
+          
+          
