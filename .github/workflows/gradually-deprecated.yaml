@@ -3,7 +3,7 @@ name: Check for new usages of deprecated functionality
 permissions:
   contents: read
 on:
-  pull_request:
+  pull_request_target:
     types: ['opened', 'synchronize']
     paths:
       - '.github/**'
