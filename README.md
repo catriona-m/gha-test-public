@@ -4,7 +4,7 @@ ssf
 sdfdfs
 
 
-Create: resourceAutomanageConfigurationProfileAssignmentCreateUpdate,
-		Read:   resourceAutomanageConfigurationProfileAssignmentRead,
+Create: resourceAutomanageConfigurationProfileAssignmentCreateUpdate,,
+		Read:   resourceAutomanageConfigurationProfileAssignmentRead,,
 		Update: resourceAutomanageConfigurationProfileAssignmentCreateUpdate,
 		Delete: resourceAutomanageConfigurationProfileAssignmentDelete,
