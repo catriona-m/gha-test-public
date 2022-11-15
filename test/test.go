@@ -1,4 +1,4 @@
 Create: resourceAutomanageConfigurationProfileAssignmentCreateUpdate,
-		Read:   resourceAutomanageConfigurationProfileAssignmentRead,
+		Read:   resourceAutomanageConfigurationProfileAssignmentRead
 		Update: resourceAutomanageConfigurationProfileAssignmentCreateUpdate,
 		Delete: resourceAutomanageConfigurationProfileAssignmentDelete,
